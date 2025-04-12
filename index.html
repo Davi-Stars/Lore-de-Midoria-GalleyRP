@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Último Refúgio - Diário de Midoria</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Palatino:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="noise-overlay"></div>
+    <div class="particles" id="particles"></div>
+    
+    <div id="music-overlay" class="music-overlay">
+        <div class="music-content">
+            <h2>Diário de Midoria</h2>
+            <p>Para uma experiência completa, este site usa música de fundo.</p>
+            <button id="start-music" class="music-button">Iniciar Jornada com Música</button>
+            <button id="no-music" class="music-button secondary">Continuar sem Música</button>
+        </div>
+    </div>
+    
+    <header>
+        <div class="header-content">
+            <h1 class="site-title">O Último Refúgio</h1>
+            <p class="site-subtitle">A Queda e Ascensão de um Piglin</p>
+        </div>
+    </header>
+
+    <nav>
+        <div class="nav-content">
+            <span class="chapter-indicator">Capítulo 1</span>
+            <div class="volume-controls">
+                <i class="fas fa-volume-down volume-down"></i>
+                <div class="volume-bar-container">
+                    <div class="volume-bar" id="volume-bar"></div>
+                </div>
+                <i class="fas fa-volume-up volume-up"></i>
+            </div>
+            <div class="gold-counter">
+                <i class="fas fa-coins gold-icon"></i>
+                <span id="gold-count">0</span>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <article class="story-container">
+            <div class="story-header">
+                <h2>O Último Refúgio</h2>
+                <div class="metadata">
+                    <span class="date">Escrito em algum dia do Éther</span>
+                </div>
+            </div>
+
+            <section class="story-content">
+                <p class="drop-cap">
+                    Eu me chamo Midoria. No meu mundo, sempre fui o melhor em tudo que fazia desde pequeno. Quando as outras crianças ainda estavam aprendendo a andar, eu já corria. Quando aprendiam a falar, eu já conversava. Era assim - sempre à frente, sempre no topo.
+                </p>
+
+                <p>Quando entrei na academia de luta aos 15 anos, não foi diferente. Em apenas três meses, já derrotava veteranos. Em seis, ganhei meu primeiro torneio regional. Com um ano, ninguém mais queria lutar comigo no meu estado.</p>
+
+                <div class="highlight-box">
+                    <p>"O Punho de Ouro" - era assim que me chamavam.</p>
+                </div>
+
+                <p>Meus golpes eram precisos, rápidos e implacáveis. Os patrocinadores começaram a aparecer. Primeiro pequenas marcas locais, depois grandes empresas nacionais. Dinheiro entrava como água.</p>
+
+                <p>Em três anos, já tinha minha própria mansão, cinco carros importados e uma coleção de relógios que valia mais que a casa dos meus pais. O sucesso subiu pra cabeça. Cada vitória, cada nocaute, cada prêmio só alimentava meu ego.</p>
+
+                <p>Comecei a humilhar meus adversários. Não bastava ganhar - eu queria destruir. Nos treinos, machucava meus parceiros de sparring. Nas entrevistas, debochava dos desafiantes. No ringue, prolongava as lutas só pra mostrar superioridade.</p>
+
+                <div class="image-container">
+                    <div class="parallax-image" id="gold-image"></div>
+                    <div class="question-mark">?</div>
+                    <div class="image-caption">O ouro que tanto me cegava...</div>
+                    <div class="unlock-hint"><i class="fas fa-mouse-pointer"></i> Clique para desbloquear a história</div>
+                    <div class="content-blocker"></div>
+                </div>
+
+                <p>O dinheiro virou obsessão. Contrato após contrato, patrocínio após patrocínio. Comprava ouro. Muito ouro. Pulseiras, correntes, anéis - tudo dourado. Dizia que era "a cor dos campeões".</p>
+
+                <div class="highlight-box">
+                    <p>E então veio a queda.</p>
+                </div>
+
+                <p>Era a luta mais importante da minha carreira. Milhões em jogo. Mas nas semanas anteriores, só festas, mulheres, bebidas. Não treinei direito. "Não preciso, sou o melhor", pensava. Subi no ringue com o mesmo sorriso arrogante de sempre.</p>
+
+                <p>No terceiro round, fui nocauteado. Uma derrota humilhante. Mas o pior veio depois: descobriram que eu tinha subornado árbitros em lutas anteriores. Meu império desmoronou da noite pro dia.</p>
+
+                <p>Patrocinadores cancelaram contratos. "Amigos" sumiram. Família se afastou, envergonhada. Meus bens foram confiscados pra pagar dívidas e multas. Em poucos meses, não sobrou nada.</p>
+
+                <p>Anos se passaram. Acabei como guarda noturno numa fábrica abandonada. Irônico como a vida dá voltas. Às vezes, olhando pro meu uniforme desgastado, eu ainda me via com aquela armadura dourada dos tempos de glória. Uma alucinação cruel.</p>
+
+                <div class="image-container">
+                    <div class="parallax-image" id="factory-image"></div>
+                    <div class="question-mark">?</div>
+                    <div class="image-caption">A fábrica abandonada onde minha vida mudou...</div>
+                    <div class="unlock-hint"><i class="fas fa-mouse-pointer"></i> Clique para desbloquear a história</div>
+                    <div class="content-blocker"></div>
+                </div>
+
+                <p>Naquela noite, tava tudo normal. Os mesmos corredores vazios da fábrica, o mesmo silêncio, o mesmo salário miserável esperando no fim do mês... Eu segurava minha lanterna com uma mão e com a outra passava pelos corredores, tocando nas máquinas enferrujadas. Às vezes, me pegava lembrando de quem eu costumava ser - o grande Midoria, campeão invicto, ídolo de milhões. Agora só restava um homem quebrado, fazendo rondas em um galpão que ninguém se importava.</p>
+
+                <div class="highlight-box">
+                    <p>Foi quando tudo mudou.</p>
+                </div>
+
+                <p>Primeiro pensei que era só cansaço, talvez eu precisasse de um café. Mas não... O chão realmente tava tremendo. As paredes balançavam como se fossem feitas de papel. E o céu, meu Deus, o céu lá fora começou a rachar! Rachaduras enormes se espalharam pelo céu noturno, deixando escapar uma luz, uma luz que não devia existir, vinda de algum lugar além do nosso mundo!</p>
+                
+                <div class="highlight-box">
+                    <p>"O fim chegou", pensei. Talvez fosse merecido depois de tudo que eu fiz.</p>
+                </div>
+                
+                <p>Foi quando ouvi. Uma melodia suave, quase infantil, vindo dos fundos do galpão. Não fazia sentido - aquela área tava vazia há anos. Apesar do medo, segui o som. Minhas pernas tremiam, minhas mãos suavam frio. A melodia ficava mais forte a cada passo, como se chamasse por mim.</p>
+
+                <p>Quando abri a porta do depósito abandonado, quase caí pra trás. Flutuando no meio da sala escura tava uma... coisa. Não era humano, não era máquina. Era como se alguém tivesse pegado música e transformado em luz, ou luz e transformado em música. DoRéMi. O nome simplesmente apareceu na minha cabeça, como se a própria criatura tivesse colocado lá.</p>
+                
+                <p>"Me... ajuda", tentei dizer, mas minha voz não saía. A melodia ficou mais intensa. A luz da criatura pulsava no ritmo da música. Tentei recuar, mas minhas pernas não obedeciam. De repente, a luz me envolveu. Não dava pra ver nada além de um brilho cegante. Meu corpo parecia estar se desfazendo, virando partículas, átomos, nada.</p>
+                
+                <p>A dor era insuportável. Senti como se cada célula do meu corpo estivesse sendo arrancada uma por uma, reorganizada e depois colocada de volta no lugar errado. Gritei até não ter mais voz, mas não ouvia nada além daquela maldita melodia.</p>
+
+                <div class="highlight-box">
+                    <p>E então... escuridão.</p>
+                </div>
+
+                <p>Quando acordei, a primeira sensação foi de que algo tinha dado muito errado. O ar era diferente - mais denso, com um cheiro que eu nunca tinha sentido antes. O céu acima de mim era fantástico! Minha cabeça latejava como se tivesse levado mil socos. Minha boca tava tão seca que parecia que tinha comido areia. Sede. Uma sede desesperadora.</p>
+                
+                <p>Me forcei a levantar, mas meu corpo tava... estranho. Não respondia direito. Era como se eu tivesse bebido demais, mas mil vezes pior. Ao longe, vi o brilho de água. Um lago pequeno, cercado por plantas que não pareciam de nenhum lugar que eu conhecia.</p>
+                
+                <p>Me arrastei até lá, literalmente arrastei. Cada movimento era uma tortura. Minhas mãos afundavam na terra de um jeito esquisito. Eu não conseguia entender por que era tão difícil me movimentar. Quando finalmente cheguei na beira do lago, me joguei de bruços, louco pra acabar com aquela sede horrível.</p>
+
+                <div class="highlight-box">
+                    <p>O mundo parou.</p>
+                </div>
+
+                <p>Não era eu. Não era meu rosto. O que me encarava de volta era um... monstro. Uma criatura bruta, rosada, com um focinho de porco, orelhas pontudas e olhos amarelados. Gritei, mas o som que saiu não era humano - era um guincho estranho. Me afastei da água em pânico. Olhei pras minhas mãos - não eram mais mãos, eram patas! Toquei meu rosto, sentindo o focinho e as presas saindo da boca.</p>
+                
+                <p>"Não, não, não," tentava dizer, mas só saíam grunhidos.</p>
+                
+                <p>Eu, Midoria, o grande campeão, transformado nisso! Era pior que perder tudo. Era perder quem eu era. Fiquei ali, paralisado por alguns minutos. Foi quando notei um detalhe no reflexo que não tinha percebido antes.</p>
+                
+                <p>Voltei pra beira do lago, me forçando a olhar de novo. Observei atentamente minha aparência. E algo mudou dentro de mim...</p>
+
+                <p>Eu não estava nu como um animal - eu vestia uma armadura. Uma armadura dourada que brilhava ao sol. E meu corpo, apesar de estranho, parecia tão resistente quanto ela! Comecei a perceber que havia algo mais nessa transformação. Não era só uma maldição - talvez fosse uma chance...</p>
+
+                <div class="image-container">
+                    <div class="parallax-image" id="piglin-image"></div>
+                    <div class="question-mark">?</div>
+                    <div class="image-caption">Minha nova forma</div>
+                    <div class="unlock-hint"><i class="fas fa-mouse-pointer"></i> Clique para desbloquear a história</div>
+                    <div class="content-blocker"></div>
+                </div>
+
+                <p>Mas então... algo aconteceu. Comecei a rir! Uma risada que não saía de mim há anos! Olhei melhor pro meu novo corpo - forte, resistente, compacto. Flexionei os braços e senti músculos poderosos. De repente, um nome surgiu na minha mente: Piglin. De todas as criaturas que eu poderia ter virado, me tornei um Piglin! Guerreiros ferozes, obcecados por ouro e lutas. A ironia não podia ser mais perfeita. Ao longe, avistei uma cidade. O Éther. Um lugar novo, um começo novo.</p>
+
+                <p>"Dessa vez vai ser diferente," jurei pra mim mesmo. "Essa é minha redenção."</p>
+
+                <p>Respirei fundo, sentindo uma força nova correndo pelo meu corpo. A obsessão por ouro e combate ainda tava lá - parte da natureza Piglin - mas agora eu sabia onde isso podia me levar. Usaria minha força pra sobreviver, não pra me perder em prazeres. Lutaria com tudo que tenho, mas sem a arrogância que me destruiu antes. Ajustei minha armadura dourada, que agora parecia fazer parte de mim, e dei o primeiro passo em direção à cidade distante. Uma nova vida me esperava no Éther. Uma segunda chance que eu não jogaria fora!</p>
+
+                <div class="thought-button-container">
+                    <button id="thought-button" class="thought-button">
+                        <i class="fas fa-satellite-dish"></i> Atualização de Midoria em Tempo Real - Clique Aqui
+                    </button>
+                </div>
+
+                <div id="thought-popup" class="thought-popup hidden">
+                    <div class="thought-popup-content">
+                        <div class="thought-bubble" id="midoria-thoughts">
+                            <!-- Efeitos visuais -->
+                            <div class="danger-alert">
+                                <i class="fas fa-exclamation-triangle danger-icon"></i>
+                            </div>
+                            <div class="idea-light">
+                                <i class="fas fa-lightbulb bulb-icon"></i>
+                            </div>
+                            
+                            <!-- Textos que aparecem e desaparecem em sequência -->
+                            <div class="thought-text" id="thought-1">"Cara, imagine alguém está lendo os meus pensamentos..."</div>
+                            <div class="action-text" id="action-1">Midoria sente um frio na espinha</div>
+                            <div class="thought-text" id="thought-2">"Que medo, sério.... isso seria assustador!"</div>
+                            <div class="action-text" id="action-2">Há um estralo na cabeça de Midoria</div>
+                            <div class="thought-text" id="thought-3">"Na real, eu mataria quem estivesse fazendo isso, HUNF!"</div>
+                            
+                            <!-- Container da imagem -->
+                            <div class="pig-image-container">
+                                <img src="images/Pig.png" alt="Midoria faz HUNF!" class="pig-image">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="story-footer">
+                <!-- Será preenchido com os créditos após o fim do pensamento -->
+            </div>
+        </article>
+    </main>
+
+    <div id="credits-container" class="credits-container hidden">
+        <div class="credits-content">
+            <h2>Diário de Midoria</h2>
+            <h3>As Crônicas do Éther</h3>
+            
+            <div class="credits-section">
+                <h4>Uma História de</h4>
+                <p>Davi (Midoria)</p>
+            </div>
+            
+            <div class="credits-section">
+                <h4>Projeto Desenvolvido para</h4>
+                <p>Servidor Galley RP de Minecraft</p>
+            </div>
+            
+            <div class="credits-section">
+                <h4>Músicas</h4>
+                <p>"MUSIC NORDIC CELTIC NO COPYRIGHT"</p>
+                <p>"Whitesand - Tenacity (Instrumental Music)"</p>
+                <p>"Eternity"</p>
+                <p>"The Wolf And The Moon"</p>
+            </div>
+            
+            <div class="credits-section">
+                <h4>Mensagem do Autor</h4>
+                <p class="author-message">Esse projeto é simples, mas foi de coração. Me diverti muito fazendo ele e poder mostrar ele a vocês, leitores, é muito bacana... sério. Espero que tenham gostado, e bem, fiz isso pois achei muito legal o servidor, e estou ansioso pra fazer parte dele e ter altas aventuras com meu amigo Frey.</p>
+                <p class="author-signature">- Davi, vulgo Midoria para os íntimos ;)</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="achievement-container" class="achievement-container hidden">
+        <div class="achievement-content">
+            <i class="fas fa-trophy achievement-icon"></i>
+            <p class="achievement-text">Leitura do primeiro capítulo concluída! Aguarde novos capítulos da história de Midoria.</p>
+        </div>
+    </div>
+
+    <div id="image-hint" class="image-hint hidden">
+        <p><i class="fas fa-hand-pointer"></i> Clique na imagem para desbloqueá-la e continuar lendo a história</p>
+    </div>
+
+    <div id="achievement-flash" class="achievement-flash"></div>
+
+    <footer>
+        <p>© Diário de Midoria - As Crônicas do Éther</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 

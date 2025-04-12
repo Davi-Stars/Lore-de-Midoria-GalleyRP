@@ -1,0 +1,1034 @@
+:root {
+    --primary-color: #8b5a2b;
+    --secondary-color: #d4af37;
+    --text-color: #362712;
+    --background-color: #f5e9d0;
+    --header-bg: #423022;
+    --highlight-color: #f8c430;
+    --shadow-color: rgba(0, 0, 0, 0.15);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Merriweather', serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.8;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.noise-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('data:image/png;base64,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');
+    opacity: 0.05;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+.particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 999;
+}
+
+header {
+    background: var(--header-bg);
+    color: #fff;
+    padding: 4rem 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('https://i.imgur.com/vtzQLcc.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.2;
+    z-index: -1;
+}
+
+.header-content {
+    position: relative;
+    z-index: 2;
+}
+
+.site-title {
+    font-size: 4rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    animation: fadeInDown 1.2s ease-out;
+    color: var(--secondary-color);
+}
+
+.site-subtitle {
+    font-size: 1.4rem;
+    font-style: italic;
+    animation: fadeInUp 1.2s ease-out;
+    color: #f8f8f8;
+}
+
+nav {
+    background-color: #2c1e12;
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px var(--shadow-color);
+}
+
+.nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    color: #e9e1d5;
+}
+
+.chapter-indicator {
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.gold-counter {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.gold-icon {
+    color: var(--secondary-color);
+}
+
+main {
+    max-width: 800px;
+    margin: 3rem auto;
+    padding: 0 1.5rem;
+}
+
+.story-container {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 8px 24px var(--shadow-color);
+    overflow: hidden;
+    transform: translateY(20px);
+    opacity: 0;
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+.story-header {
+    padding: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e1d4c0;
+    text-align: center;
+}
+
+.story-header h2 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+}
+
+.metadata {
+    font-style: italic;
+    color: #8d8d8d;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+
+.story-content {
+    padding: 2rem;
+    padding-top: 0.5rem;
+    font-size: 1.1rem;
+    position: relative;
+}
+
+.drop-cap::first-letter {
+    font-size: 4em;
+    float: left;
+    line-height: 0.7;
+    margin-right: 0.1em;
+    margin-top: 0.12em;
+    padding-top: 0;
+    color: var(--primary-color);
+    font-family: 'Georgia', serif;
+    font-weight: bold;
+}
+
+.story-content p {
+    margin-bottom: 1.5rem;
+    text-align: justify;
+}
+
+/* Adicionando mais espaço para o primeiro parágrafo */
+.drop-cap {
+    margin-top: 1.5rem;
+    text-indent: 0;
+    padding-left: 0;
+    line-height: 1.9;
+}
+
+.highlight-box {
+    background-color: #f9f3e8;
+    border-left: 5px solid var(--highlight-color);
+    padding: 1.5rem;
+    margin: 2rem 0;
+    font-size: 1.3rem;
+    font-style: italic;
+    text-align: center;
+    box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+.image-container {
+    margin: 2.5rem -2rem;
+    height: 550px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    z-index: 5;
+}
+
+/* Desativar o ponteiro para imagens que não podem ser clicadas ainda */
+.image-container:not(.active) ~ .image-container:not(:first-of-type) {
+    cursor: not-allowed !important;
+}
+
+/* Garantir que a primeira imagem sempre possa ser clicada */
+.image-container:first-of-type {
+    cursor: pointer !important;
+}
+
+.parallax-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+    filter: brightness(0.05);
+    transition: filter 1.5s ease-in-out;
+}
+
+.image-container.active .parallax-image {
+    filter: brightness(1);
+}
+
+.image-container.active .content-blocker {
+    display: none;
+}
+
+.question-mark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 8rem;
+    color: rgba(255, 255, 255, 0.7);
+    z-index: 5;
+    animation: pulse 1s infinite alternate;
+    opacity: 1;
+    transition: opacity 0.5s ease-out;
+    pointer-events: none;
+}
+
+.image-container.active .question-mark {
+    opacity: 0;
+    display: none;
+}
+
+#gold-image {
+    background-image: url('images/O ouro que tanto me cegava....webp');
+    background-position: center top;
+}
+
+#factory-image {
+    background-image: url('images/A fábrica abandonada onde minha vida mudou....png');
+    background-position: center center;
+}
+
+#piglin-image {
+    background-image: url('images/Minha nova forma.webp');
+    background-position: center top;
+}
+
+.image-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    font-style: italic;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 1.8s ease-in-out;
+}
+
+.image-container.active .image-caption {
+    opacity: 1;
+}
+
+.thought-bubble {
+    position: relative;
+    background-color: #f1f1f1;
+    border-radius: 20px;
+    padding: 2.5rem 2rem 8rem;
+    margin: 8rem 1rem 3rem;
+    font-style: italic;
+    text-align: center;
+    box-shadow: 0 4px 8px var(--shadow-color);
+    min-height: 300px;
+    transition: background-color 0.2s ease;
+}
+
+.thought-bubble::before {
+    content: '';
+    position: absolute;
+    top: -15px;
+    left: 50px;
+    width: 30px;
+    height: 30px;
+    background-color: #f1f1f1;
+    border-radius: 50%;
+    transform: rotate(45deg);
+    transition: background-color 0.2s ease;
+}
+
+.thought-bubble::after {
+    content: '';
+    position: absolute;
+    top: -30px;
+    left: 30px;
+    width: 15px;
+    height: 15px;
+    background-color: #f1f1f1;
+    border-radius: 50%;
+    transition: background-color 0.2s ease;
+}
+
+.thought-text {
+    font-size: 1.4rem;
+    color: #555;
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    right: 0;
+    padding: 0 2rem;
+    top: 30%;
+    transform: translateY(-50%);
+    transition: opacity 0.8s ease, color 0.2s ease;
+}
+
+.thought-text.active {
+    opacity: 1;
+}
+
+.thought-text.hide {
+    opacity: 0;
+}
+
+.action-text {
+    font-style: normal;
+    color: #555;
+    font-size: 1.3rem;
+    font-weight: bold;
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    right: 0;
+    padding: 0 2rem;
+    top: 30%;
+    transform: translateY(-50%);
+    transition: opacity 0.8s ease, color 0.2s ease;
+}
+
+.action-text.active {
+    opacity: 1;
+}
+
+/* Classe de perigo para o balão de pensamento */
+.thought-bubble.danger {
+    background-color: rgba(255, 200, 200, 0.9); /* Vermelho claro */
+}
+
+.thought-bubble.danger::before,
+.thought-bubble.danger::after {
+    background-color: rgba(255, 200, 200, 0.9); /* Exatamente a mesma cor do balão principal */
+}
+
+.thought-bubble.danger .thought-text,
+.thought-bubble.danger .action-text {
+    color: #aa0000; /* Texto vermelho escuro quando em alerta */
+}
+
+.thought-bubble.danger #action-1 {
+    color: #ff0000; /* Vermelho mais intenso para o texto "Midoria sente um frio na espinha" */
+    text-shadow: 0 0 3px rgba(255, 0, 0, 0.3);
+}
+
+/* Efeito de alerta vermelho */
+.danger-alert {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 0, 0, 0.2);
+    border-radius: 20px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 0;
+    padding-top: 20px;
+    animation: pulse 0.5s infinite alternate;
+    z-index: 10;
+}
+
+.danger-icon {
+    font-size: 3rem;
+    color: red;
+}
+
+@keyframes pulse {
+    from { opacity: 0.3; }
+    to { opacity: 0.7; }
+}
+
+/* Efeito de brilho com lâmpada */
+.idea-light {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255,215,0,0.3) 0%, rgba(255,255,255,0) 70%);
+    border-radius: 20px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 0;
+    padding-top: 20px;
+    z-index: 10;
+}
+
+.bulb-icon {
+    font-size: 3rem;
+    color: #FFD700;
+    animation: glow 0.5s infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #FFD700, 0 0 20px #FFD700; }
+    to { text-shadow: 0 0 10px #fff, 0 0 15px #FFD700, 0 0 20px #FFD700, 0 0 25px #FFD700; }
+}
+
+.pig-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 11;
+}
+
+.pig-image-container.active {
+    opacity: 1;
+}
+
+.pig-image {
+    max-width: 250px;
+    border-radius: 0;
+    box-shadow: none;
+    transform: scale(0);
+    opacity: 0;
+    background: transparent;
+}
+
+/* Animação de "kikar" para a imagem */
+@keyframes kickIn {
+    0% { transform: scale(0); opacity: 0; }
+    50% { transform: scale(1.2); opacity: 1; }
+    70% { transform: scale(0.9); }
+    85% { transform: scale(1.05); }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.pig-image.active {
+    animation: kickIn 0.8s forwards;
+}
+
+.story-footer {
+    padding: 2rem;
+    text-align: center;
+    position: relative;
+}
+
+footer {
+    background-color: #241b14;
+    color: #a89b8c;
+    padding: 1.5rem;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .site-title {
+        font-size: 3rem;
+    }
+    
+    .site-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .story-header h2 {
+        font-size: 2rem;
+    }
+    
+    .highlight-box {
+        padding: 1rem;
+        font-size: 1.1rem;
+    }
+    
+    .image-container {
+        height: 200px;
+    }
+}
+
+/* Overlay para música */
+.music-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.music-content {
+    background-color: #2c1e12;
+    color: #f5e9d0;
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 500px;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+    border: 2px solid #8b5a2b;
+}
+
+.music-content h2 {
+    color: #d4af37;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+}
+
+.music-content p {
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.music-button {
+    background-color: #d4af37;
+    color: #2c1e12;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.music-button:hover {
+    background-color: #f8c430;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.music-button.secondary {
+    background-color: transparent;
+    color: #d4af37;
+    border: 1px solid #d4af37;
+}
+
+.music-button.secondary:hover {
+    background-color: rgba(212, 175, 55, 0.1);
+}
+
+.music-overlay.hidden {
+    display: none;
+}
+
+/* Barra de navegação e controles de volume */
+.nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    color: #e9e1d5;
+}
+
+.volume-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+.volume-bar-container {
+    width: 80px;
+    height: 6px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+}
+
+.volume-bar {
+    height: 100%;
+    background-color: var(--secondary-color);
+    width: 50%; /* Valor inicial */
+    border-radius: 3px;
+    transition: width 0.1s ease;
+}
+
+.volume-down, .volume-up {
+    color: var(--secondary-color);
+    cursor: pointer;
+    font-size: 1rem;
+    transition: color 0.2s ease;
+}
+
+.volume-down:hover, .volume-up:hover {
+    color: #ffffff;
+}
+
+/* Botão de pensamentos do Midoria */
+.thought-button-container {
+    display: flex;
+    justify-content: center;
+    margin: 4rem 0 2rem;
+    padding-top: 2rem;
+    position: relative;
+}
+
+.thought-button {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    animation: pulse 1.5s infinite alternate;
+}
+
+.thought-button:hover {
+    background-color: #6e4521;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+}
+
+/* Pop-up do pensamento */
+.thought-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95); /* Fundo bem escuro, quase preto */
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; /* Alinhar na parte inferior */
+    padding-bottom: 50px; /* Espaço na parte inferior */
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    backdrop-filter: blur(5px);
+}
+
+.thought-popup.hidden {
+    display: none;
+}
+
+.thought-popup.visible {
+    opacity: 1;
+}
+
+.thought-popup-content {
+    width: 90%;
+    max-width: 800px;
+    position: relative;
+    margin-bottom: 30px; /* Espaço adicional na parte inferior */
+}
+
+/* Efeito de conquista desbloqueada */
+.achievement-flash {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.9);
+    z-index: 999;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.achievement-flash.active {
+    animation: flash 1s forwards;
+}
+
+@keyframes flash {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* Créditos finais */
+.credits-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    z-index: 1001;
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.credits-container.hidden {
+    display: none;
+}
+
+.credits-container.visible {
+    opacity: 1;
+}
+
+.credits-content {
+    color: #fff;
+    text-align: center;
+    animation: scrollCredits 40s linear forwards;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: -100%;
+}
+
+.credits-content h2 {
+    font-size: 3rem;
+    color: var(--secondary-color);
+    margin-bottom: 0.5rem;
+}
+
+.credits-content h3 {
+    font-size: 1.8rem;
+    color: #e9e1d5;
+    margin-bottom: 3rem;
+}
+
+.credits-section {
+    margin-bottom: 2.5rem;
+    opacity: 0.9;
+}
+
+.credits-section h4 {
+    font-size: 1.5rem;
+    color: var(--secondary-color);
+    margin-bottom: 0.5rem;
+}
+
+.credits-section p {
+    font-size: 1.2rem;
+    margin-bottom: 0.3rem;
+}
+
+.author-message {
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+    font-style: italic;
+}
+
+.author-signature {
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+@keyframes scrollCredits {
+    0% {
+        bottom: -100%;
+    }
+    
+    100% {
+        bottom: 140%;
+    }
+}
+
+/* Notificação de conquista */
+.achievement-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 1002;
+    max-width: 350px;
+    transform: translateX(120%);
+    transition: transform 0.5s ease;
+}
+
+.achievement-container.visible {
+    transform: translateX(0);
+    animation: fadeOutAfterDelay 5s forwards;
+}
+
+.achievement-container.hidden {
+    display: none;
+}
+
+.achievement-icon {
+    color: var(--secondary-color);
+    font-size: 2rem;
+}
+
+.achievement-text {
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+@keyframes fadeOutAfterDelay {
+    0%, 80% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(120%);
+    }
+}
+
+/* Dica para clicar na imagem */
+.image-hint {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    z-index: 100;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.image-hint.visible {
+    opacity: 1;
+}
+
+.image-hint.hidden {
+    opacity: 0;
+}
+
+.image-hint i {
+    color: var(--secondary-color);
+}
+
+/* Classe para bloquear a rolagem */
+.scroll-locked {
+    overflow: hidden;
+}
+
+/* Estilos para o bloqueio da história */
+.story-content {
+    position: relative;
+}
+
+.content-blocker {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1000vh; /* Altura enorme para garantir que cubra todo o conteúdo abaixo */
+    background: linear-gradient(to bottom, 
+                           rgba(0,0,0,0) 0%, 
+                           rgba(0,0,0,0.85) 30px, 
+                           rgba(0,0,0,0.95) 100px);
+    z-index: 4;
+    pointer-events: none; /* Permite clicar através do bloqueador */
+}
+
+/* Estilo para embaçar o conteúdo após imagens não desbloqueadas */
+.image-container:not(.active) ~ p,
+.image-container:not(.active) ~ div:not(.image-container) {
+    filter: blur(5px);
+    opacity: 0.6;
+    pointer-events: none; /* Impede cliques no conteúdo embaçado */
+    user-select: none; /* Impede seleção de texto */
+    transition: filter 0.8s ease, opacity 0.8s ease; /* Transição suave */
+}
+
+/* Certifica que a imagem seguinte não é afetada pelo embaçamento */
+.image-container:not(.active) ~ .image-container {
+    filter: none;
+    opacity: 1;
+    pointer-events: auto;
+    transition: none; /* Sem transição para as próximas imagens */
+}
+
+/* Garante que o botão de pensamento não seja embaçado */
+.image-container:not(.active) ~ .thought-button-container {
+    filter: none;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Aviso pulsante para desbloquear imagem */
+.unlock-hint {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(139, 90, 43, 0.9);
+    color: white;
+    padding: 15px 25px;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    z-index: 6;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    animation: hintPulse 1.5s infinite alternate;
+    pointer-events: none;
+    font-weight: bold;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.unlock-hint.visible {
+    opacity: 1;
+}
+
+.unlock-hint i {
+    color: var(--secondary-color);
+}
+
+@keyframes hintPulse {
+    from { transform: translate(-50%, -50%) scale(1); box-shadow: 0 0 20px rgba(212, 175, 55, 0.5); }
+    to { transform: translate(-50%, -50%) scale(1.05); box-shadow: 0 0 30px rgba(212, 175, 55, 0.8); }
+}
+
+/* Animação de sacudida para imagens não desbloqueáveis */
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    50% { transform: translateX(10px); }
+    75% { transform: translateX(-10px); }
+    100% { transform: translateX(0); }
+}
+
+.image-container.shake {
+    animation: shake 0.5s ease;
+} 
