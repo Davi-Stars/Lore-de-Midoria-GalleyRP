@@ -79,6 +79,7 @@
                     <div class="image-caption">O ouro que tanto me cegava...</div>
                     <div class="unlock-hint"><i class="fas fa-mouse-pointer"></i> Clique para desbloquear a história</div>
                     <div class="content-blocker"></div>
+                    <div class="image-quote"><p>O ouro que tanto me cegava...</p></div>
                 </div>
 
                 <p>O dinheiro virou obsessão. Contrato após contrato, patrocínio após patrocínio. Comprava ouro. Muito ouro. Pulseiras, correntes, anéis - tudo dourado. Dizia que era "a cor dos campeões".</p>
@@ -101,6 +102,7 @@
                     <div class="image-caption">A fábrica abandonada onde minha vida mudou...</div>
                     <div class="unlock-hint"><i class="fas fa-mouse-pointer"></i> Clique para desbloquear a história</div>
                     <div class="content-blocker"></div>
+                    <div class="image-quote"><p>A fábrica abandonada onde minha vida mudou...</p></div>
                 </div>
 
                 <p>Naquela noite, tava tudo normal. Os mesmos corredores vazios da fábrica, o mesmo silêncio, o mesmo salário miserável esperando no fim do mês... Eu segurava minha lanterna com uma mão e com a outra passava pelos corredores, tocando nas máquinas enferrujadas. Às vezes, me pegava lembrando de quem eu costumava ser - o grande Midoria, campeão invicto, ídolo de milhões. Agora só restava um homem quebrado, fazendo rondas em um galpão que ninguém se importava.</p>
@@ -153,6 +155,7 @@
                     <div class="image-caption">Minha nova forma</div>
                     <div class="unlock-hint"><i class="fas fa-mouse-pointer"></i> Clique para desbloquear a história</div>
                     <div class="content-blocker"></div>
+                    <div class="image-quote"><p>Minha nova forma</p></div>
                 </div>
 
                 <p>Mas então... algo aconteceu. Comecei a rir! Uma risada que não saía de mim há anos! Olhei melhor pro meu novo corpo - forte, resistente, compacto. Flexionei os braços e senti músculos poderosos. De repente, um nome surgiu na minha mente: Piglin. De todas as criaturas que eu poderia ter virado, me tornei um Piglin! Guerreiros ferozes, obcecados por ouro e lutas. A ironia não podia ser mais perfeita. Ao longe, avistei uma cidade. O Éther. Um lugar novo, um começo novo.</p>
@@ -231,11 +234,20 @@
         </div>
     </div>
 
-    <div id="achievement-container" class="achievement-container hidden">
-        <div class="achievement-content">
-            <i class="fas fa-trophy achievement-icon"></i>
-            <p class="achievement-text">Leitura do primeiro capítulo concluída! Aguarde novos capítulos da história de Midoria.</p>
+    <!-- Conquista relacionada à quebra da quarta parede -->
+    <div id="mindread-achievement" class="achievement-container achievement-mindread hidden">
+        <div class="achievement-icon">
+            <i class="fas fa-brain"></i>
         </div>
+        <p class="achievement-text">Quebra da quarta parede! Você testemunhou os pensamentos mais íntimos de Midoria.</p>
+    </div>
+
+    <!-- Conquista relacionada à conclusão do capítulo -->
+    <div id="chapter-achievement" class="achievement-container achievement-chapter hidden">
+        <div class="achievement-icon">
+            <i class="fas fa-trophy"></i>
+        </div>
+        <p class="achievement-text">Leitura do primeiro capítulo concluída! Aguarde novos capítulos da história de Midoria.</p>
     </div>
 
     <div id="image-hint" class="image-hint hidden">
@@ -243,6 +255,15 @@
     </div>
 
     <div id="achievement-flash" class="achievement-flash"></div>
+
+    <div id="image-popup-overlay" class="image-popup-overlay">
+        <div class="image-popup-container">
+            <div class="close-popup">
+                <i class="fas fa-times"></i>
+            </div>
+            <img id="popup-image" src="" alt="Imagem ampliada">
+        </div>
+    </div>
 
     <footer>
         <p>© Diário de Midoria - As Crônicas do Éther</p>

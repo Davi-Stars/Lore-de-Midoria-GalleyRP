@@ -139,6 +139,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // Timers para mostrar dicas
     let hintTimers = {};
     
+    // Elementos para o pop-up de imagem
+    const imagePopupOverlay = document.getElementById('image-popup-overlay');
+    const popupImage = document.getElementById('popup-image');
+    const closePopupButton = document.querySelector('.close-popup');
+    
     // Verificar visibilidade e mostrar dicas quando estiver próximo
     function handleScroll() {
         imageContainers.forEach((container, index) => {
@@ -208,7 +213,11 @@ document.addEventListener('DOMContentLoaded', function() {
     imageContainers.forEach((container, index) => {
         container.addEventListener('click', function() {
             // Se a imagem já estiver ativa, não faz nada
-            if (this.classList.contains('active')) return;
+            if (this.classList.contains('active')) {
+                // Se já estiver ativa, mostrar a imagem no pop-up
+                showImageInPopup(this);
+                return;
+            }
             
             // Verificar se a imagem está na ordem correta para ser desbloqueada
             if (index > 0 && !imageContainers[index - 1].classList.contains('active')) {
@@ -220,8 +229,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
             
-            // Adiciona a classe active
-            this.classList.add('active');
+            // Marca a imagem como ativa mas não altera a aparência dela ainda
+            this.classList.add('active-pending');
             
             // Remover o bloqueador de conteúdo
             const contentBlocker = this.querySelector('.content-blocker');
@@ -253,8 +262,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 }, 500);
             }
             
-            // Exibe o conteúdo desbloqueado com uma animação suave
-            // CSS já cuida disso com os seletores :not(.active) ~ p, etc.
+            // Mostrar a imagem no pop-up imediatamente
+            showImageInPopup(this);
             
             // Incrementa a contagem de ouro e atualiza o display
             goldCount += Math.floor(Math.random() * 5) + 3; // Ganhar entre 3 e 7 moedas
@@ -297,11 +306,93 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
+    // Função para mostrar imagem no pop-up
+    function showImageInPopup(container) {
+        // Obter o ID da imagem e o caminho do arquivo
+        const parallaxImage = container.querySelector('.parallax-image');
+        let imagePath = '';
+        let imageType = '';
+        
+        if (parallaxImage.id === 'gold-image') {
+            imagePath = 'images/O ouro que tanto me cegava....webp';
+            imageType = 'gold';
+        } else if (parallaxImage.id === 'factory-image') {
+            imagePath = 'images/A fábrica abandonada onde minha vida mudou....png';
+            imageType = 'factory';
+        } else if (parallaxImage.id === 'piglin-image') {
+            imagePath = 'images/Minha nova forma.webp';
+            imageType = 'piglin';
+        }
+        
+        // Configurar a imagem no pop-up
+        popupImage.src = imagePath;
+        
+        // Aplicar estilo específico à moldura do pop-up
+        const popupContainer = document.querySelector('.image-popup-container');
+        popupContainer.className = 'image-popup-container';
+        popupContainer.classList.add(`image-popup-${imageType}`);
+        
+        // Aplicar estilo específico ao botão de fechar
+        const closeButton = document.querySelector('.close-popup');
+        closeButton.className = 'close-popup';
+        closeButton.classList.add(`close-popup-${imageType}`);
+        
+        // Mostrar o pop-up
+        document.body.classList.add('scroll-locked');
+        imagePopupOverlay.style.display = 'flex';
+        
+        // Guardar referência ao container atual no pop-up
+        imagePopupOverlay.dataset.currentContainer = Array.from(imageContainers).indexOf(container);
+        imagePopupOverlay.dataset.imageType = imageType;
+    }
+    
+    // Fechar o pop-up quando clicar no botão X
+    closePopupButton.addEventListener('click', function() {
+        // Esconder o pop-up
+        imagePopupOverlay.style.display = 'none';
+        document.body.classList.remove('scroll-locked');
+        
+        // Pegar o container atual e mostrar a citação
+        const containerIndex = parseInt(imagePopupOverlay.dataset.currentContainer);
+        const currentContainer = imageContainers[containerIndex];
+        const imageType = imagePopupOverlay.dataset.imageType;
+        
+        // Primeiro tornar a imagem realmente ativa se estava pendente
+        if (currentContainer.classList.contains('active-pending')) {
+            currentContainer.classList.remove('active-pending');
+            currentContainer.classList.add('active');
+        }
+        
+        // Esconder a imagem parallax e mostrar a citação
+        const parallaxImage = currentContainer.querySelector('.parallax-image');
+        const imageCaption = currentContainer.querySelector('.image-caption');
+        const imageQuote = currentContainer.querySelector('.image-quote');
+        
+        parallaxImage.style.display = 'none';
+        imageCaption.style.display = 'none';
+        
+        // Mostrar a citação diretamente, sem efeito flashbang
+        imageQuote.style.display = 'flex';
+        
+        // Aplicar classe específica para personalização baseada no tipo de imagem
+        imageQuote.classList.add(`image-quote-${imageType}`);
+    });
+    
+    // Fechar o pop-up quando clicar fora da imagem
+    imagePopupOverlay.addEventListener('click', function(e) {
+        if (e.target === imagePopupOverlay) {
+            closePopupButton.click();
+        }
+    });
+    
     // Botão para ativar o pensamento do Midoria
     const thoughtButton = document.getElementById('thought-button');
     const thoughtPopup = document.getElementById('thought-popup');
     const creditsContainer = document.getElementById('credits-container');
-    const achievementContainer = document.getElementById('achievement-container');
+    
+    // Elementos de conquistas
+    const mindreadAchievement = document.getElementById('mindread-achievement');
+    const chapterAchievement = document.getElementById('chapter-achievement');
     
     // Ativa a sequência de pensamentos quando o botão é clicado
     thoughtButton.addEventListener('click', function() {
@@ -379,9 +470,13 @@ function startThoughtSequence() {
     const ideaLight = document.querySelector('.idea-light');
     const pigContainer = document.querySelector('.pig-image-container');
     const pigImage = document.querySelector('.pig-image');
+    const thoughtBubble = document.getElementById('midoria-thoughts');
     const thoughtPopup = document.getElementById('thought-popup');
     const creditsContainer = document.getElementById('credits-container');
-    const achievementContainer = document.getElementById('achievement-container');
+    
+    // Elementos de conquistas
+    const mindreadAchievement = document.getElementById('mindread-achievement');
+    const chapterAchievement = document.getElementById('chapter-achievement');
     
     // Sons
     const alertSound = new Audio('sounds/Alarme de Emergência - Som de Alerta Vermelho Emergency Alarm - Red Alert Sound आपातका.mp3');
@@ -408,12 +503,12 @@ function startThoughtSequence() {
                 alertSound.play();
                 
                 // Adiciona uma classe ao balão de pensamento para garantir o efeito vermelho
-                document.getElementById('midoria-thoughts').classList.add('danger');
+                thoughtBubble.classList.add('danger');
                 
                 setTimeout(() => {
                     action1.classList.remove('active');
                     dangerAlert.style.display = 'none';
-                    document.getElementById('midoria-thoughts').classList.remove('danger');
+                    thoughtBubble.classList.remove('danger');
                     // Para o som de alerta
                     alertSound.pause();
                     alertSound.currentTime = 0;
@@ -439,6 +534,18 @@ function startThoughtSequence() {
                                     
                                     setTimeout(() => {
                                         thought3.classList.add('active');
+                                        
+                                        // Mostra a conquista de quebra da quarta parede aqui, no final do pensamento
+                                        mindreadAchievement.classList.remove('hidden');
+                                        
+                                        // Tocar som de ideia para a conquista
+                                        const mindreadSound = new Audio('sounds/som de ideia nova efeito sonoro.mp3');
+                                        mindreadSound.volume = currentVolume * 1.5;
+                                        mindreadSound.play();
+                                        
+                                        setTimeout(() => {
+                                            mindreadAchievement.classList.add('visible');
+                                        }, 500);
                                         
                                         setTimeout(() => {
                                             // Esconde o texto quando o porco aparece
@@ -472,54 +579,47 @@ function startThoughtSequence() {
                                                             setTimeout(() => {
                                                                 creditsContainer.classList.add('visible');
                                                                 
-                                                                // Após o tempo dos créditos, exibe a conquista
+                                                                // Após o tempo dos créditos
                                                                 setTimeout(() => {
                                                                     creditsContainer.classList.remove('visible');
                                                                     
                                                                     setTimeout(() => {
                                                                         creditsContainer.classList.add('hidden');
                                                                         
+                                                                        // Após os créditos, mostrar a conquista do capítulo
+                                                                        chapterAchievement.classList.remove('hidden');
+                                                                        
+                                                                        // Tocar som de ideia para a conquista
+                                                                        const achievementSound = new Audio('sounds/som de ideia nova efeito sonoro.mp3');
+                                                                        achievementSound.volume = currentVolume * 1.5;
+                                                                        achievementSound.play();
+                                                                        
+                                                                        setTimeout(() => {
+                                                                            chapterAchievement.classList.add('visible');
+                                                                        }, 500);
+                                                                        
                                                                         // Rolar para o topo da página
                                                                         window.scrollTo({
                                                                             top: 0,
                                                                             behavior: 'smooth'
                                                                         });
-                                                                        
-                                                                        // Mostra a conquista
-                                                                        setTimeout(() => {
-                                                                            achievementContainer.classList.remove('hidden');
-                                                                            achievementContainer.classList.add('visible');
-                                                                            // Toca o som da ideia para a conquista
-                                                                            const achievementSound = new Audio('sounds/som de ideia nova efeito sonoro.mp3');
-                                                                            achievementSound.volume = currentVolume * 1.5;
-                                                                            achievementSound.play();
-                                                                            
-                                                                            // Esconde automaticamente após o tempo da animação
-                                                                            setTimeout(() => {
-                                                                                achievementContainer.classList.remove('visible');
-                                                                                
-                                                                                setTimeout(() => {
-                                                                                    achievementContainer.classList.add('hidden');
-                                                                                }, 500);
-                                                                            }, 5000);
-                                                                        }, 1000);
-                                                                    }, 1000);
-                                                                }, 35000); // Tempo dos créditos
+                                                                    }, 500);
+                                                                }, 35000); // Ajustado para 35 segundos
                                                             }, 50);
-                                                        }, 1000);
+                                                        }, 800);
                                                     }, 500);
                                                 }, 1000);
-                                            }, 1500); // Tempo do som do porco
-                                        }, 1800); // Após "HUNF!"
-                                    }, 800);
-                                }, 2000); // Duração da ação 2
-                            }, 800);
-                        }, 2500); // Duração do pensamento 2
-                    }, 800);
-                }, 2000); // Duração da ação 1
-            }, 800);
-        }, 2500); // Duração do pensamento 1
-    }, 1000); // Início da sequência após o balão aparecer
+                                            }, 1500);
+                                        }, 3000);
+                                    }, 1500);
+                                }, 3000);
+                            }, 1500);
+                        }, 3000);
+                    }, 1500);
+                }, 3000);
+            }, 1500);
+        }, 3000);
+    }, 1000);
 }
 
 // Função para criar partículas douradas
@@ -531,37 +631,38 @@ function createParticles() {
         const particle = document.createElement('div');
         particle.classList.add('particle');
         
-        // Estilo das partículas
-        particle.style.position = 'absolute';
-        particle.style.width = `${Math.random() * 6 + 2}px`;
-        particle.style.height = particle.style.width;
-        particle.style.background = `rgba(212, 175, 55, ${Math.random() * 0.5 + 0.2})`;
-        particle.style.borderRadius = '50%';
-        particle.style.boxShadow = '0 0 10px rgba(212, 175, 55, 0.8)';
-        
         // Posição aleatória
         particle.style.left = `${Math.random() * 100}%`;
-        particle.style.top = `${Math.random() * 100}%`;
         
-        // Animação
-        particle.style.animation = `float ${Math.random() * 20 + 10}s linear infinite`;
-        particle.style.animationDelay = `${Math.random() * 5}s`;
+        // Distribuir as partículas em diferentes alturas iniciais
+        // para evitar que todas comecem do fundo
+        particle.style.top = `${Math.random() * 100 + 10}%`;
+        
+        // Tamanho variado 
+        const size = Math.random() * 6 + 2;
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        
+        // Opacidade variada
+        particle.style.opacity = `${Math.random() * 0.4 + 0.2}`;
+        
+        // Velocidade variada - mais rápido = menos atraso perceptível
+        const duration = Math.random() * 15 + 10;
+        particle.style.animation = `float ${duration}s linear infinite`;
+        
+        // Delays mais curtos e variados para dar impressão de movimento contínuo
+        const delay = Math.random() * 3;
+        particle.style.animationDelay = `-${delay}s`;
         
         particlesContainer.appendChild(particle);
     }
     
-    // Adicionar keyframe animation para float
+    // Adicionar keyframe animation modificado
     const styleSheet = document.createElement('style');
     styleSheet.textContent = `
         @keyframes float {
             0% {
-                transform: translateY(0) rotate(0);
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.8;
-            }
-            90% {
+                transform: translateY(100vh) rotate(0);
                 opacity: 0.6;
             }
             100% {
